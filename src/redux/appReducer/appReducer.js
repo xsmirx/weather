@@ -1,20 +1,19 @@
-export const SET_GEOLOCATION = "appReducer/SET_GEOLOCATION";
+import { SET_LOADING } from "./actions";
 
-const initialState = { geolocation: null };
+const initialState = {
+  isLoading: false,
+  messages: [],
+  errorMessages: [],
+};
 
 export const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_GEOLOCATION:
+    case SET_LOADING:
       return {
         ...state,
-        geolocation: action.payload,
+        isLoading: action.isLoading,
       };
     default:
       return state;
   }
 };
-
-export const setGeolocationAC = (payload) => ({
-  type: SET_GEOLOCATION,
-  payload,
-});

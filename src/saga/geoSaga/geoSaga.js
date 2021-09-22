@@ -1,5 +1,6 @@
 import { fork } from "@redux-saga/core/effects";
 import { setGeolocationAC } from "../../redux/geoReducer/actions";
+import { getWeatherOnCoordsAC } from "./../weatherSaga/actions";
 import { store } from "../../store";
 
 //watcher
@@ -13,5 +14,6 @@ function* getGeoCoords() {
     store.dispatch(
       setGeolocationAC(position.coords.latitude, position.coords.longitude)
     );
+    store.dispatch(getWeatherOnCoordsAC());
   });
 }

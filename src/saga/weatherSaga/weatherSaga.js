@@ -1,12 +1,13 @@
-import { put, select, takeEvery } from "@redux-saga/core/effects";
+import { put, select, takeLeading } from "@redux-saga/core/effects";
 import { weatherApi } from "../../api/weatherApi";
 import { GeolocationError } from "../../classes/GeolocationError";
 import { setErrorAC, setLoadingAC } from "../../redux/appReducer/actions";
+import { setWeatherAC } from "../../redux/weatherReducer/actions";
 import { GET_WEATHER_ON_COORDS } from "./actions";
 
 //watcher
 export function* weatherSaga() {
-  yield takeEvery(GET_WEATHER_ON_COORDS, getWeatherOnCoords);
+  yield takeLeading(GET_WEATHER_ON_COORDS, getWeatherOnCoords);
 }
 
 //worker
@@ -19,10 +20,9 @@ function* getWeatherOnCoords() {
       throw new GeolocationError("Requires permission to use geolocation");
     }
     const weather = yield weatherApi.getWeatherOnCoords(lat, lon);
-    console.log(weather);
+    yield put(setWeatherAC(weather));
   } catch (error) {
     yield put(setErrorAC(error));
-    console.error(error);
   } finally {
     yield put(setLoadingAC(false));
   }

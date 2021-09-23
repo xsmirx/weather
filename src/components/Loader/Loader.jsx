@@ -8,12 +8,8 @@ const StyledLoading = styled.div`
   width: 100vw;
 `;
 
-const Loader = () => {
-  return (
-    <StyledLoading>
-      <LinearProgress />
-    </StyledLoading>
-  );
+const Loader = ({ isLoading }) => {
+  return <StyledLoading>{isLoading && <LinearProgress />}</StyledLoading>;
 };
 
 export default Loader;

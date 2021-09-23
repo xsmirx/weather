@@ -32,7 +32,14 @@ const Weather = ({
   return (
     <Box maxWidth="444px">
       {name && temp && (
-        <Card variant="elevation" elevation={5}>
+        <Card
+          variant="elevation"
+          elevation={5}
+          sx={{
+            backdropFilter: "blur(4px)",
+            background: "rgba(255, 255, 255, 0.25)",
+          }}
+        >
           <CardContent>
             <Typography variant="h4">
               {name}, {country}

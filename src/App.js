@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import AlertErrorContainer from "./components/alertError/AlertErrorContainer";
+import AlertErrorContainer from "./components/AlertError/AlertErrorContainer";
 import LoaderContainer from "./components/Loader/LoaderContainer";
 import WeatherContainer from "./components/Weather/WeatherContainer";
 

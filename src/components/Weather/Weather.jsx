@@ -52,7 +52,9 @@ const Weather = ({
               }°C`}</Typography>
             </StyledTemp>
             <Box>
-              <Typography variant="body2">{`Feels like: ${feelsLike}°C`}</Typography>
+              <Typography variant="body2">{`Feels like: ${Math.round(
+                feelsLike
+              )}°C`}</Typography>
               <Typography variant="body2">{`Clouds: ${clouds}`}</Typography>
               <Typography variant="body2">{`Wind: ${wind}m/s`}</Typography>
             </Box>

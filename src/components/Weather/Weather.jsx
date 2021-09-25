@@ -30,7 +30,7 @@ const Weather = ({
   onRefresh,
 }) => {
   return (
-    <Box maxWidth="444px">
+    <Box maxWidth="444px" sx={{ margin: "16px 0 0 0" }}>
       {name && temp && (
         <Card
           variant="elevation"

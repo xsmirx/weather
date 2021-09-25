@@ -4,6 +4,7 @@ import BgImage from "./images/bg3.jpg";
 import LoaderContainer from "./components/Loader/LoaderContainer";
 import WeatherContainer from "./components/Weather/WeatherContainer";
 import BackgroundImage from "./components/BackgroungImage/BackgroundImage";
+import ToolBar from "./components/ToolBar/Toolbar";
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       <BackgroundImage image={BgImage} />
       <LoaderContainer />
       <AlertErrorContainer />
-      <Container maxWidth="xs" sx={{ paddingTop: "16px" }}>
+      <ToolBar />
+      <Container maxWidth="xs" >
         <WeatherContainer />
       </Container>
     </>

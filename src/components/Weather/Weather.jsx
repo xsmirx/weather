@@ -12,19 +12,10 @@ const StyledTemp = styled.div`
   }
 `;
 
-const Weather = ({
-  name,
-  country,
-  temp,
-  feelsLike,
-  clouds,
-  wind,
-  iconLink,
-  onRefresh,
-}) => {
+const Weather = ({ isLoading, weather }) => {
   return (
     <Box maxWidth="444px" sx={{ margin: "16px 0 0 0" }}>
-      {name && temp && (
+      {weather && (
         <Card
           variant="elevation"
           elevation={5}
@@ -35,21 +26,24 @@ const Weather = ({
         >
           <CardContent>
             <Typography variant="h4">
-              {name}, {country}
+              {weather.name}, {weather.sys.country}
             </Typography>
 
             <StyledTemp>
-              <img src={iconLink} alt="weather icon" />
+              <img
+                src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+                alt="weather icon"
+              />
               <Typography variant="h2">{`${
-                Math.round(temp * 10) / 10
+                Math.round(weather.main.temp * 10) / 10
               }°C`}</Typography>
             </StyledTemp>
             <Box>
               <Typography variant="body2">{`Feels like: ${Math.round(
-                feelsLike
+                weather.main.feels_like
               )}°C`}</Typography>
-              <Typography variant="body2">{`Clouds: ${clouds}`}</Typography>
-              <Typography variant="body2">{`Wind: ${wind}m/s`}</Typography>
+              <Typography variant="body2">{`Clouds: ${weather.weather[0].description}`}</Typography>
+              <Typography variant="body2">{`Wind: ${weather.wind.speed}m/s`}</Typography>
             </Box>
           </CardContent>
         </Card>

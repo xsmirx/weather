@@ -1,6 +1,6 @@
+import BgImage from "./images/bg3.jpg";
 import { Container } from "@mui/material";
 import AlertErrorContainer from "./components/AlertError/AlertErrorContainer";
-import BgImage from "./images/bg3.jpg";
 import LoaderContainer from "./components/Loader/LoaderContainer";
 import WeatherContainer from "./components/Weather/WeatherContainer";
 import BackgroundImage from "./components/BackgroungImage/BackgroundImage";
@@ -13,7 +13,7 @@ const App = () => {
       <LoaderContainer />
       <AlertErrorContainer />
       <ToolBar />
-      <Container maxWidth="xs" >
+      <Container maxWidth="xs">
         <WeatherContainer />
       </Container>
     </>

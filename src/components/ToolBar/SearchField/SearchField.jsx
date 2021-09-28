@@ -2,6 +2,14 @@ import { InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { alpha, styled } from "@mui/material/styles";
 import { useFormik } from "formik";
+import ListItemsContainer from "../../ListItems/ListItemsContainer";
+
+const StyledForm = styled("form")`
+  width: 35%;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -10,11 +18,9 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
     width: "auto",
   },
 }));
@@ -31,6 +37,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
+  width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -43,32 +50,34 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchField = ({ getWeather }) => {
+const SearchField = ({ getPlaces }) => {
   const formik = useFormik({
     initialValues: {
       placeName: "",
     },
     onSubmit: (values) => {
-      getWeather(values.placeName);
+      getPlaces(values.placeName);
     },
   });
-  console.log(formik);
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          id="placeName"
-          name="placeName"
-          onChange={formik.handleChange}
-          value={formik.values.placeName}
-          placeholder="Search place…"
-          inputProps={{ "aria-label": "search" }}
-        />
-      </Search>
-    </form>
+    <>
+      <StyledForm onSubmit={formik.handleSubmit}>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            id="placeName"
+            name="placeName"
+            onChange={formik.handleChange}
+            value={formik.values.placeName}
+            placeholder="Search of place…"
+            inputProps={{ "aria-label": "search" }}
+          />
+        </Search>
+        <ListItemsContainer />
+      </StyledForm>
+    </>
   );
 };
 

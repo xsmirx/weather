@@ -4,7 +4,7 @@ import { weatherApi } from "../../api/weatherApi";
 
 import { GeolocationError } from "../../classes/GeolocationError";
 import { setErrorAC, setLoadingAC } from "../../redux/appReducer/actions";
-import { setWeatherAC } from "../../redux/weatherReducer/actions";
+import { setPlacesAC, setWeatherAC } from "../../redux/weatherReducer/actions";
 import { FIND_PLACES, GET_USER_WEATHER } from "./actions";
 
 //watcher
@@ -35,7 +35,7 @@ function* getPlaces({ placeName }) {
   try {
     yield put(setLoadingAC(true));
     const response = yield call(weatherApi.getPlaces, placeName);
-    yield console.log(response);
+    yield put(setPlacesAC(response));
   } catch (error) {
     yield put(setErrorAC(error));
   } finally {

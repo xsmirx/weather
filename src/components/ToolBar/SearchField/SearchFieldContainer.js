@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import { getWeatherOnPlaceNameAC } from "../../../saga/weatherSaga/actions";
+import { getPlacesAC } from "../../../saga/weatherSaga/actions";
 import SearchField from "./SearchField";
 
 const mdtp = (dispatch) => ({
-  getWeather: (placeName) => dispatch(getWeatherOnPlaceNameAC(placeName)),
+  getPlaces: (placeName) => dispatch(getPlacesAC(placeName)),
 });
 
 export default connect(null, mdtp)(SearchField);

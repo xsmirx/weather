@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import SyncIcon from "@mui/icons-material/Sync";
+import { Card, CardContent, Typography } from "@mui/material";
 import styled from "styled-components";
 import { Box } from "@mui/system";
 
@@ -59,11 +52,6 @@ const Weather = ({
               <Typography variant="body2">{`Wind: ${wind}m/s`}</Typography>
             </Box>
           </CardContent>
-          <CardActions>
-            <IconButton size="small" onClick={onRefresh}>
-              <SyncIcon />
-            </IconButton>
-          </CardActions>
         </Card>
       )}
     </Box>

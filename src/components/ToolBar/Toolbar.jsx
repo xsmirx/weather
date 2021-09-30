@@ -1,6 +1,7 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import ExploreBtn from "./ExploreBtn/ExploreBtn";
 import SearchFieldContainer from "./SearchField/SearchFieldContainer";
 
 export default function ToolBar() {
@@ -16,6 +17,7 @@ export default function ToolBar() {
           Weather App
         </Typography>
         <SearchFieldContainer />
+        <ExploreBtn />
       </Toolbar>
     </AppBar>
   );
